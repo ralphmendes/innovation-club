@@ -1,0 +1,61 @@
+/** comments **/
+
+.comments {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.comments .containter {
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.comments h4 {
+    font-weight: 400;
+    margin: 10px 0 10px 0;
+}
+
+.comments .author {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 10px;
+}
+
+.comments .author img {
+    margin-right: 10px;
+    width: 40px;
+}
+
+.comments .author-name {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.comments .author-name * {
+    margin: 0;
+    padding: 0;
+}
+
+.comments .author-name .name {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.comments .author-name small {
+    font-size: 12px;
+    color: #949494;
+}
+
+.comments .comment {
+    padding-left: 0;
+    margin-left: 50px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 25px;
+}
+
+.comments .no-cmnt {
+    font-size: 16px;
+    font-weight: 300;
+}

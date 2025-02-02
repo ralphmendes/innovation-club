@@ -1,0 +1,24 @@
+/** Posts List **/
+
+.post h3 a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0 , 1);
+    transition: all 0.3s ease 0s;
+}
+
+.post h3 a:hover {
+    color: rgba(0, 0, 0,0.8);
+}
+
+.post .date {
+    padding: 0 0 10px 0;
+    margin-left: 10px;
+    color: #949494;
+}
+
+.post .content {
+    font-size: 14px;
+    color: #000000;
+    padding: 10px;
+}

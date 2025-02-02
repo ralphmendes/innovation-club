@@ -1,0 +1,22 @@
+/** Post Creation **/
+
+.create form {
+    padding: 10px;
+}
+
+.create form input[type="file"] {
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+}
+
+.create .author,.create .title, .create .content {
+    padding: 5px;
+    margin: 5px; 
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    border: 1px solid #999;
+    border-radius: 5px;
+}

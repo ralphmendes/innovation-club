@@ -1,0 +1,100 @@
+{% extends 'blog/post_base.html' %}
+    {% load static %}
+    {% block title %}
+        {{ post.title }}
+    {% endblock %} 
+    {% block content %}
+        <div class="container-sm">
+            <div>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="not found!!" class="post-image">
+                {% endif %}
+                <h2>{{ post.title|title }}</h2>
+                <p class="date"><small>Published by <em><strong>{{ post.author }}</strong></em>, on {{ post.published_date|date:'d-m-Y, h:m:s' }}, Category: <em><strong>{{ post.category }}</strong></em></small></p>
+                <p class="content">{{ post.content|linebreaksbr }}</p>
+            </div>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="me-auto p-2 bd-highlight">
+                    {% if user.is_authenticated %}
+                        {% if request.user == post.author %}
+                            <div class="row">
+                                <div class="d-grid gap-2 d-md-block">
+                                    {% if not post.published_date %}
+                                        <a class="btn btn-primary" href="{% url 'blog:post_publish' pk=post.pk %}">Publish</a>
+                                    {% endif %}
+                                    <a class="btn btn-primary" href="{% url 'blog:update' pk=post.pk %}">Edit</a>
+                                    <a class="btn btn-danger" href="{% url 'blog:delete' pk=post.pk %}">Remove</a>                                   
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="ms-auto p-2 bd-highlight">
+                    {% if not post.published_date %}
+                    {% else %}
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'blog:vote_post' post.pk 1 %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button class="btn btn-secondary" type="submit" {% if user_vote == 1 %} style="background-color: #198754;"{% endif %}>
+                                ({{ total_upvotes }}) Upvote 👍
+                            </button>
+                            </form>
+        
+                            <form action="{% url 'blog:vote_post' post.pk -1 %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button class="btn btn-secondary" type="submit" {% if user_vote == -1 %} style="background-color: #dc3545;"{% endif %}>
+                                ({{ total_downvotes }}) Downvote 👎
+                            </button>
+                        </form>
+                    {% else %}
+
+                        <button class="btn btn-secondary" type="button" disabled>
+                                ({{ total_upvotes }}) Upvote 👍
+                        </button>
+        
+
+                        <button class="btn btn-secondary" type="button" disabled>
+                                ({{ total_downvotes }}) Downvote 👎
+                        </button>
+                            
+                    {% endif %}
+                    {% endif %}
+            </div>
+            
+        </div>
+        {% if not post.published_date %}
+        {% else %}
+        <div class="comments">
+            <hr>
+            <h4><i>Comments:</i></h4>
+            {% for comment in post.comments.all %}
+                <div class="containter">
+                    <div class="author">
+                        <img src="{% static 'images/user-icon.png' %}" alt="">
+                        <div class="author-name">
+                            <p class="name">{{ comment.author }}</p>
+                            <small>{{ comment.created_date|date:'M d,Y, h:m:s' }}</small>
+                        </div>    
+                    </div>
+                        <p class="comment">{{ comment.comment|linebreaksbr }}</p>
+                </div>
+                {% empty %}
+                <p class="no-cmnt"><i>no comments ...</i></p>
+            {% endfor %}
+            <div class="create">
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'blog:add_comment' post.pk %}">
+                        {% csrf_token %}
+                        {{ comment_form.as_p }}
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Submit your comment</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <p class="alert alert-warning">You must be logged in to comment or vote.</p>
+                    <a type='button' class="btn btn-primary" href="{% url 'log_in' %}">Log in to Comment or vote</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}    
+    {% endblock %} 

@@ -1,0 +1,52 @@
+/**sign up**/
+
+.auth {
+    width: 300px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    background: #fff;
+    padding: 20px;
+    margin: 6% auto 0;
+    text-align: center;
+    border-radius: 20px; 
+}
+
+.auth form {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+}
+
+.auth .field {
+    border-radius: 20px;
+    padding: 10px;
+    margin: 5px; 
+    width: 100%;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: black;
+    border: 1px solid #999;
+}
+
+.auth h2 {
+    color: #1c8adb;
+    margin-bottom: 30px;
+}
+
+.auth .button {
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(28, 138, 219, 1);
+    transition: all 0.3s ease 0s;
+}
+
+.auth .button:hover {
+    background-color: rgba(28, 138, 219, 0.8);
+}

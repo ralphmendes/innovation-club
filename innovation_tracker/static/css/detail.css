@@ -1,0 +1,31 @@
+/** Post Detail **/
+
+.detail {
+    padding-bottom: 10px;
+}
+
+.detail .content {
+    text-align: justify;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 10px;
+}
+
+.detail .buttons {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+    padding: 0;
+}
+
+.detail hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.post-image {
+    width: 100%;
+    padding: 10px;
+}

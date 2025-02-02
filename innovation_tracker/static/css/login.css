@@ -1,0 +1,16 @@
+.log-in {
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+}
+
+.log-in  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: blue;
+}
+
+.login-signup {
+    width: 70px;
+    margin-top: -50px;
+}

@@ -1,0 +1,21 @@
+{% extends 'blog/post_base.html' %}
+    {% load static %}
+    {% block title %}
+        Sign Up 
+    {% endblock %} 
+    {% block content %}
+    <div class="auth">
+        {% if registered %}
+            <h2>Thank you for registeration</h2>
+        {% else %}
+            <img class="login-signup" src="{% static "images/user-icon.png" %}" alt="oops!!">
+            <h2 style="font-size: 40px;">Create New Account</h2>
+            <form method="POST">
+                {{ user_form.as_p }}
+                {% csrf_token %}
+                <input class="button" type="submit" value="Sign up">
+            </form>
+            <p class="log-in">You have an account? <a href="{% url 'log_in' %}">Log in</a></p>
+        {% endif %}
+    </div>
+    {% endblock %} 
